@@ -1,0 +1,532 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Items>
+
+
+  <Item name="Chip channel 1" identifier="chipno1" category="Equipment" tags="smallitem, channelchip" cargocontaineridentifier="metalcrate" HideConditionBar="true" HideConditionInTooltip="true" impactsoundtag="impact_metal_light">
+    <InventoryIcon texture="%ModDir%/content/items.png" sourcerect="144,0,32,32" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/items.png" sourcerect="144,0,32,32" origin="0.5,0.5" />
+    <Body width="16" height="12" density="10.00" />
+    <Holdable slots="Any,RightHand,LeftHand" aimpos="50,0" handle1="-10,0" holdangle="20" msg="ItemMsgPickUpSelect"/>
+    
+    <Powered MinVolgate="0" powerconsumption="0" currentpowerconsumption="0" IsActive="false">
+      <!-- Señal de ejecución -->
+      <StatusEffect type="OnUse" target="Parent" targetitemcomponent="Powered" IsActive="true" setvalue="true">
+        <Conditional HasTag="remotecompatible"/>
+      </StatusEffect>
+      <!-- Señal de contacto -->
+      <StatusEffect type="OnActive" target="NearbyItems" targetitemcomponent="Powered" targetidentifiers="chipno1" range="10000.0" >
+        <Use/>
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="this" targetitemcomponent="Powered" IsActive="false" setvalue="false"/>
+    </Powered>
+
+    <LightComponent LightColor="0.5,0.5,0.5,1.0" directional="true" Flicker="0.02" range="800" powerconsumption="0" IsOn="false">
+      <LightTexture texture="Content/Lights/lightcone.png" origin="0.0, 0.5" size="1.0,1.0" />
+      <!-- Señal de ejecución -->
+      <StatusEffect type="OnBroken" target="Parent" targetitemcomponent="LightComponent" IsOn="true" setvalue="true">
+        <Conditional HasTag="remotecontroller"/>
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="this" condition="100">
+      </StatusEffect>
+
+      <StatusEffect type="OnActive" target="NearbyItems" targetidentifiers="chipno1" range="10000.0" condition="-100">
+      </StatusEffect>
+
+      <StatusEffect type="OnActive" target="This" targetitemcomponent="LightComponent" IsOn="false" setvalue="false">
+      </StatusEffect>
+    </LightComponent>
+
+    <Price baseprice="100" minleveldifficulty="15">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" sold="false"/>
+      <Price storeidentifier="merchantresearch" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="merchantengineering" multiplier="0.9" />
+    </Price>
+    <PreferredContainer primary="engcab"/>
+    <PreferredContainer secondary="wreckengcab,abandonedengcab,pirateengcab,outpostengcab,beaconengcab" amount="1" spawnprobability="0.05" />
+    <Deconstruct time="10">
+      <Item identifier="fpgacircuit" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="10">
+      <RequiredItem identifier="fpgacircuit" />
+    </Fabricate>
+  </Item>
+
+
+
+  <Item name="Chip channel 2" identifier="chipno2" category="Equipment" tags="smallitem, channelchip" cargocontaineridentifier="metalcrate" HideConditionBar="true" HideConditionInTooltip="true" impactsoundtag="impact_metal_light">
+    <InventoryIcon texture="%ModDir%/content/items.png" sourcerect="176,0,32,32" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/items.png" sourcerect="176,0,32,32" origin="0.5,0.5" />
+    <Body width="16" height="12" density="10.00" />
+    <Holdable slots="Any,RightHand,LeftHand" aimpos="50,0" handle1="-10,0" holdangle="20" msg="ItemMsgPickUpSelect"/>
+    
+    <Powered MinVolgate="0" powerconsumption="0" currentpowerconsumption="0" IsActive="false">
+      <!-- Señal de ejecución -->
+      <StatusEffect type="OnUse" target="Parent" targetitemcomponent="Powered" IsActive="true" setvalue="true">
+        <Conditional HasTag="remotecompatible"/>
+      </StatusEffect>
+      <!-- Señal de contacto -->
+      <StatusEffect type="OnActive" target="NearbyItems" targetitemcomponent="Powered" targetidentifiers="chipno2" range="10000.0" >
+        <Use/>
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="this" targetitemcomponent="Powered" IsActive="false" setvalue="false"/>
+    </Powered>
+
+    <LightComponent LightColor="0.5,0.5,0.5,1.0" directional="true" Flicker="0.02" range="800" powerconsumption="0" IsOn="false">
+      <LightTexture texture="Content/Lights/lightcone.png" origin="0.0, 0.5" size="1.0,1.0" />
+      <!-- Señal de ejecución -->
+      <StatusEffect type="OnBroken" target="Parent" targetitemcomponent="LightComponent" IsOn="true" setvalue="true">
+        <Conditional HasTag="remotecontroller"/>
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="this" condition="100">
+      </StatusEffect>
+      <!-- Señal de contacto -->
+      <StatusEffect type="OnActive" target="NearbyItems" targetidentifiers="chipno2" range="10000.0" condition="-100">
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" targetitemcomponent="LightComponent" IsOn="false" setvalue="false">
+      </StatusEffect>
+    </LightComponent>
+
+    <Price baseprice="100" minleveldifficulty="15">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" sold="false"/>
+      <Price storeidentifier="merchantresearch" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="merchantengineering" multiplier="0.9" />
+    </Price>
+    <PreferredContainer primary="engcab"/>
+    <PreferredContainer secondary="wreckengcab,abandonedengcab,pirateengcab,outpostengcab,beaconengcab" amount="1" spawnprobability="0.05" />
+    <Deconstruct time="10">
+      <Item identifier="fpgacircuit" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="10">
+      <RequiredItem identifier="fpgacircuit" />
+    </Fabricate>
+  </Item>
+
+
+
+  <Item name="Chip channel 3" identifier="chipno3" category="Equipment" tags="smallitem, channelchip" cargocontaineridentifier="metalcrate" HideConditionBar="true" HideConditionInTooltip="true" impactsoundtag="impact_metal_light">
+    <InventoryIcon texture="%ModDir%/content/items.png" sourcerect="208,0,32,32" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/items.png" sourcerect="208,0,32,32" origin="0.5,0.5" />
+    <Body width="16" height="12" density="10.00" />
+    <Holdable slots="Any,RightHand,LeftHand" aimpos="50,0" handle1="-10,0" holdangle="20" msg="ItemMsgPickUpSelect"/>
+    
+    <Powered MinVolgate="0" powerconsumption="0" currentpowerconsumption="0" IsActive="false">
+      <!-- Señal de ejecución -->
+      <StatusEffect type="OnUse" target="Parent" targetitemcomponent="Powered" IsActive="true" setvalue="true">
+        <Conditional HasTag="remotecompatible"/>
+      </StatusEffect>
+      <!-- Señal de contacto -->
+      <StatusEffect type="OnActive" target="NearbyItems" targetitemcomponent="Powered" targetidentifiers="chipno3" range="10000.0" >
+        <Use/>
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="this" targetitemcomponent="Powered" IsActive="false" setvalue="false"/>
+    </Powered>
+
+    <LightComponent LightColor="0.5,0.5,0.5,1.0" directional="true" Flicker="0.02" range="800" powerconsumption="0" IsOn="false">
+      <LightTexture texture="Content/Lights/lightcone.png" origin="0.0, 0.5" size="1.0,1.0" />
+      <!-- Señal de ejecución -->
+      <StatusEffect type="OnBroken" target="Parent" targetitemcomponent="LightComponent" IsOn="true" setvalue="true">
+        <Conditional HasTag="remotecontroller"/>
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="this" condition="100">
+      </StatusEffect>
+      <!-- Señal de contacto -->
+      <StatusEffect type="OnActive" target="NearbyItems" targetidentifiers="chipno3" range="10000.0" condition="-100">
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" targetitemcomponent="LightComponent" IsOn="false" setvalue="false">
+      </StatusEffect>
+    </LightComponent>
+
+    <Price baseprice="100" minleveldifficulty="15">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" sold="false"/>
+      <Price storeidentifier="merchantresearch" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="merchantengineering" multiplier="0.9" />
+    </Price>
+    <PreferredContainer primary="engcab"/>
+    <PreferredContainer secondary="wreckengcab,abandonedengcab,pirateengcab,outpostengcab,beaconengcab" amount="1" spawnprobability="0.05" />
+    <Deconstruct time="10">
+      <Item identifier="fpgacircuit" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="10">
+      <RequiredItem identifier="fpgacircuit" />
+    </Fabricate>
+  </Item>
+
+
+
+
+  <Item name="Chip channel 4" identifier="chipno4" category="Equipment" tags="smallitem, channelchip" cargocontaineridentifier="metalcrate" HideConditionBar="true" HideConditionInTooltip="true" impactsoundtag="impact_metal_light">
+    <InventoryIcon texture="%ModDir%/content/items.png" sourcerect="240,0,32,32" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/items.png" sourcerect="240,0,32,32" origin="0.5,0.5" />
+    <Body width="16" height="12" density="10.00" />
+    <Holdable slots="Any,RightHand,LeftHand" aimpos="50,0" handle1="-10,0" holdangle="20" msg="ItemMsgPickUpSelect"/>
+    
+    <Powered MinVolgate="0" powerconsumption="0" currentpowerconsumption="0" IsActive="false">
+      <!-- Señal de ejecución -->
+      <StatusEffect type="OnUse" target="Parent" targetitemcomponent="Powered" IsActive="true" setvalue="true">
+        <Conditional HasTag="remotecompatible"/>
+      </StatusEffect>
+      <!-- Señal de contacto -->
+      <StatusEffect type="OnActive" target="NearbyItems" targetitemcomponent="Powered" targetidentifiers="chipno4" range="10000.0" >
+        <Use/>
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="this" targetitemcomponent="Powered" IsActive="false" setvalue="false"/>
+    </Powered>
+
+    <LightComponent LightColor="0.5,0.5,0.5,1.0" directional="true" Flicker="0.02" range="800" powerconsumption="0" IsOn="false">
+      <LightTexture texture="Content/Lights/lightcone.png" origin="0.0, 0.5" size="1.0,1.0" />
+      <!-- Señal de ejecución -->
+      <StatusEffect type="OnBroken" target="Parent" targetitemcomponent="LightComponent" IsOn="true" setvalue="true">
+        <Conditional HasTag="remotecontroller"/>
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="this" condition="100">
+      </StatusEffect>
+      <!-- Señal de contacto -->
+      <StatusEffect type="OnActive" target="NearbyItems" targetidentifiers="chipno4" range="10000.0" condition="-100">
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" targetitemcomponent="LightComponent" IsOn="false" setvalue="false">
+      </StatusEffect>
+    </LightComponent>
+
+    <Price baseprice="100" minleveldifficulty="15">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" sold="false"/>
+      <Price storeidentifier="merchantresearch" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="merchantengineering" multiplier="0.9" />
+    </Price>
+    <PreferredContainer primary="engcab"/>
+    <PreferredContainer secondary="wreckengcab,abandonedengcab,pirateengcab,outpostengcab,beaconengcab" amount="1" spawnprobability="0.05" />
+    <Deconstruct time="10">
+      <Item identifier="fpgacircuit" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="10">
+      <RequiredItem identifier="fpgacircuit" />
+    </Fabricate>
+  </Item>
+
+
+  <Item name="Chip channel 5" identifier="chipno5" category="Equipment" tags="smallitem, channelchip" cargocontaineridentifier="metalcrate" HideConditionBar="true" HideConditionInTooltip="true" impactsoundtag="impact_metal_light">
+    <InventoryIcon texture="%ModDir%/content/items.png" sourcerect="272,0,32,32" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/items.png" sourcerect="272,0,32,32" origin="0.5,0.5" />
+    <Body width="16" height="12" density="10.00" />
+    <Holdable slots="Any,RightHand,LeftHand" aimpos="50,0" handle1="-10,0" holdangle="20" msg="ItemMsgPickUpSelect"/>
+    
+    <Powered MinVolgate="0" powerconsumption="0" currentpowerconsumption="0" IsActive="false">
+      <!-- Señal de ejecución -->
+      <StatusEffect type="OnUse" target="Parent" targetitemcomponent="Powered" IsActive="true" setvalue="true">
+        <Conditional HasTag="remotecompatible"/>
+      </StatusEffect>
+      <!-- Señal de contacto -->
+      <StatusEffect type="OnActive" target="NearbyItems" targetitemcomponent="Powered" targetidentifiers="chipno5" range="10000.0" >
+        <Use/>
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="this" targetitemcomponent="Powered" IsActive="false" setvalue="false"/>
+    </Powered>
+
+    <LightComponent LightColor="0.5,0.5,0.5,1.0" directional="true" Flicker="0.02" range="800" powerconsumption="0" IsOn="false">
+      <LightTexture texture="Content/Lights/lightcone.png" origin="0.0, 0.5" size="1.0,1.0" />
+      <!-- Señal de ejecución -->
+      <StatusEffect type="OnBroken" target="Parent" targetitemcomponent="LightComponent" IsOn="true" setvalue="true">
+        <Conditional HasTag="remotecontroller"/>
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="this" condition="100">
+      </StatusEffect>
+      <!-- Señal de contacto -->
+      <StatusEffect type="OnActive" target="NearbyItems" targetidentifiers="chipno5" range="10000.0" condition="-100">
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" targetitemcomponent="LightComponent" IsOn="false" setvalue="false">
+      </StatusEffect>
+    </LightComponent>
+
+    <Price baseprice="100" minleveldifficulty="15">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" sold="false"/>
+      <Price storeidentifier="merchantresearch" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="merchantengineering" multiplier="0.9" />
+    </Price>
+    <PreferredContainer primary="engcab"/>
+    <PreferredContainer secondary="wreckengcab,abandonedengcab,pirateengcab,outpostengcab,beaconengcab" amount="1" spawnprobability="0.05" />
+    <Deconstruct time="10">
+      <Item identifier="fpgacircuit" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="10">
+      <RequiredItem identifier="fpgacircuit" />
+    </Fabricate>
+  </Item>
+
+
+
+  <Item name="Chip channel A" identifier="chipnoA" category="Equipment" tags="smallitem, channelchip" cargocontaineridentifier="metalcrate" HideConditionBar="true" HideConditionInTooltip="true" impactsoundtag="impact_metal_light">
+    <InventoryIcon texture="%ModDir%/content/items.png" sourcerect="144,32,32,32" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/items.png" sourcerect="144,32,32,32" origin="0.5,0.5" />
+    <Body width="16" height="12" density="10.00" />
+    <Holdable slots="Any,RightHand,LeftHand" aimpos="50,0" handle1="-10,0" holdangle="20" msg="ItemMsgPickUpSelect"/>
+    
+    <Powered MinVolgate="0" powerconsumption="0" currentpowerconsumption="0" IsActive="false">
+      <!-- Señal de ejecución -->
+      <StatusEffect type="OnUse" target="Parent" targetitemcomponent="Powered" IsActive="true" setvalue="true">
+        <Conditional HasTag="remotecompatible"/>
+      </StatusEffect>
+      <!-- Señal de contacto -->
+      <StatusEffect type="OnActive" target="NearbyItems" targetitemcomponent="Powered" targetidentifiers="chipnoA" range="10000.0" >
+        <Use/>
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="this" targetitemcomponent="Powered" IsActive="false" setvalue="false"/>
+    </Powered>
+
+    <LightComponent LightColor="0.5,0.5,0.5,1.0" directional="true" Flicker="0.02" range="800" powerconsumption="0" IsOn="false">
+      <LightTexture texture="Content/Lights/lightcone.png" origin="0.0, 0.5" size="1.0,1.0" />
+      <!-- Señal de ejecución -->
+      <StatusEffect type="OnBroken" target="Parent" targetitemcomponent="LightComponent" IsOn="true" setvalue="true">
+        <Conditional HasTag="remotecontroller"/>
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="this" condition="100">
+      </StatusEffect>
+      <!-- Señal de contacto -->
+      <StatusEffect type="OnActive" target="NearbyItems" targetidentifiers="chipnoA" range="10000.0" condition="-100">
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" targetitemcomponent="LightComponent" IsOn="false" setvalue="false">
+      </StatusEffect>
+    </LightComponent>
+
+    <Price baseprice="100" minleveldifficulty="15">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" sold="false"/>
+      <Price storeidentifier="merchantresearch" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="merchantengineering" multiplier="0.9" />
+    </Price>
+    <PreferredContainer primary="engcab"/>
+    <PreferredContainer secondary="wreckengcab,abandonedengcab,pirateengcab,outpostengcab,beaconengcab" amount="1" spawnprobability="0.05" />
+    <Deconstruct time="10">
+      <Item identifier="fpgacircuit" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="10">
+      <RequiredItem identifier="fpgacircuit" />
+    </Fabricate>
+  </Item>
+
+
+
+  <Item name="Chip channel B" identifier="chipnoB" category="Equipment" tags="smallitem, channelchip" cargocontaineridentifier="metalcrate" HideConditionBar="true" HideConditionInTooltip="true" impactsoundtag="impact_metal_light">
+    <InventoryIcon texture="%ModDir%/content/items.png" sourcerect="176,32,32,32" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/items.png" sourcerect="176,32,32,32" origin="0.5,0.5" />
+    <Body width="16" height="12" density="10.00" />
+    <Holdable slots="Any,RightHand,LeftHand" aimpos="50,0" handle1="-10,0" holdangle="20" msg="ItemMsgPickUpSelect"/>
+    
+    <Powered MinVolgate="0" powerconsumption="0" currentpowerconsumption="0" IsActive="false">
+      <!-- Señal de ejecución -->
+      <StatusEffect type="OnUse" target="Parent" targetitemcomponent="Powered" IsActive="true" setvalue="true">
+        <Conditional HasTag="remotecompatible"/>
+      </StatusEffect>
+      <!-- Señal de contacto -->
+      <StatusEffect type="OnActive" target="NearbyItems" targetitemcomponent="Powered" targetidentifiers="chipnoB" range="10000.0" >
+        <Use/>
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="this" targetitemcomponent="Powered" IsActive="false" setvalue="false"/>
+    </Powered>
+
+    <LightComponent LightColor="0.5,0.5,0.5,1.0" directional="true" Flicker="0.02" range="800" powerconsumption="0" IsOn="false">
+      <LightTexture texture="Content/Lights/lightcone.png" origin="0.0, 0.5" size="1.0,1.0" />
+      <!-- Señal de ejecución -->
+      <StatusEffect type="OnBroken" target="Parent" targetitemcomponent="LightComponent" IsOn="true" setvalue="true">
+        <Conditional HasTag="remotecontroller"/>
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="this" condition="100">
+      </StatusEffect>
+      <!-- Señal de contacto -->
+      <StatusEffect type="OnActive" target="NearbyItems" targetidentifiers="chipnoB" range="10000.0" condition="-100">
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" targetitemcomponent="LightComponent" IsOn="false" setvalue="false">
+      </StatusEffect>
+    </LightComponent>
+
+    <Price baseprice="100" minleveldifficulty="15">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" sold="false"/>
+      <Price storeidentifier="merchantresearch" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="merchantengineering" multiplier="0.9" />
+    </Price>
+    <PreferredContainer primary="engcab"/>
+    <PreferredContainer secondary="wreckengcab,abandonedengcab,pirateengcab,outpostengcab,beaconengcab" amount="1" spawnprobability="0.05" />
+    <Deconstruct time="10">
+      <Item identifier="fpgacircuit" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="10">
+      <RequiredItem identifier="fpgacircuit" />
+    </Fabricate>
+  </Item>
+
+
+
+  <Item name="Chip channel C" identifier="chipnoC" category="Equipment" tags="smallitem, channelchip" cargocontaineridentifier="metalcrate" HideConditionBar="true" HideConditionInTooltip="true" impactsoundtag="impact_metal_light">
+    <InventoryIcon texture="%ModDir%/content/items.png" sourcerect="208,32,32,32" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/items.png" sourcerect="208,32,32,32" origin="0.5,0.5" />
+    <Body width="16" height="12" density="10.00" />
+    <Holdable slots="Any,RightHand,LeftHand" aimpos="50,0" handle1="-10,0" holdangle="20" msg="ItemMsgPickUpSelect"/>
+    
+    <Powered MinVolgate="0" powerconsumption="0" currentpowerconsumption="0" IsActive="false">
+      <!-- Señal de ejecución -->
+      <StatusEffect type="OnUse" target="Parent" targetitemcomponent="Powered" IsActive="true" setvalue="true">
+        <Conditional HasTag="remotecompatible"/>
+      </StatusEffect>
+      <!-- Señal de contacto -->
+      <StatusEffect type="OnActive" target="NearbyItems" targetitemcomponent="Powered" targetidentifiers="chipnoC" range="10000.0" >
+        <Use/>
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="this" targetitemcomponent="Powered" IsActive="false" setvalue="false"/>
+    </Powered>
+
+    <LightComponent LightColor="0.5,0.5,0.5,1.0" directional="true" Flicker="0.02" range="800" powerconsumption="0" IsOn="false">
+      <LightTexture texture="Content/Lights/lightcone.png" origin="0.0, 0.5" size="1.0,1.0" />
+      <!-- Señal de ejecución -->
+      <StatusEffect type="OnBroken" target="Parent" targetitemcomponent="LightComponent" IsOn="true" setvalue="true">
+        <Conditional HasTag="remotecontroller"/>
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="this" condition="100">
+      </StatusEffect>
+      <!-- Señal de contacto -->
+      <StatusEffect type="OnActive" target="NearbyItems" targetidentifiers="chipnoC" range="10000.0" condition="-100">
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" targetitemcomponent="LightComponent" IsOn="false" setvalue="false">
+      </StatusEffect>
+    </LightComponent>
+
+    <Price baseprice="100" minleveldifficulty="15">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" sold="false"/>
+      <Price storeidentifier="merchantresearch" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="merchantengineering" multiplier="0.9" />
+    </Price>
+    <PreferredContainer primary="engcab"/>
+    <PreferredContainer secondary="wreckengcab,abandonedengcab,pirateengcab,outpostengcab,beaconengcab" amount="1" spawnprobability="0.05" />
+    <Deconstruct time="10">
+      <Item identifier="fpgacircuit" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="10">
+      <RequiredItem identifier="fpgacircuit" />
+    </Fabricate>
+  </Item>
+
+
+  <Item name="Chip channel D" identifier="chipnoD" category="Equipment" tags="smallitem, channelchip" cargocontaineridentifier="metalcrate" HideConditionBar="true" HideConditionInTooltip="true" impactsoundtag="impact_metal_light">
+    <InventoryIcon texture="%ModDir%/content/items.png" sourcerect="240,32,32,32" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/items.png" sourcerect="240,32,32,32" origin="0.5,0.5" />
+    <Body width="16" height="12" density="10.00" />
+    <Holdable slots="Any,RightHand,LeftHand" aimpos="50,0" handle1="-10,0" holdangle="20" msg="ItemMsgPickUpSelect"/>
+    
+    <Powered MinVolgate="0" powerconsumption="0" currentpowerconsumption="0" IsActive="false">
+      <!-- Señal de ejecución -->
+      <StatusEffect type="OnUse" target="Parent" targetitemcomponent="Powered" IsActive="true" setvalue="true">
+        <Conditional HasTag="remotecompatible"/>
+      </StatusEffect>
+      <!-- Señal de contacto -->
+      <StatusEffect type="OnActive" target="NearbyItems" targetitemcomponent="Powered" targetidentifiers="chipnoD" range="10000.0" >
+        <Use/>
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="this" targetitemcomponent="Powered" IsActive="false" setvalue="false"/>
+    </Powered>
+
+    <LightComponent LightColor="0.5,0.5,0.5,1.0" directional="true" Flicker="0.02" range="800" powerconsumption="0" IsOn="false">
+      <LightTexture texture="Content/Lights/lightcone.png" origin="0.0, 0.5" size="1.0,1.0" />
+      <!-- Señal de ejecución -->
+      <StatusEffect type="OnBroken" target="Parent" targetitemcomponent="LightComponent" IsOn="true" setvalue="true">
+        <Conditional HasTag="remotecontroller"/>
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="this" condition="100">
+      </StatusEffect>
+      <!-- Señal de contacto -->
+      <StatusEffect type="OnActive" target="NearbyItems" targetidentifiers="chipnoD" range="10000.0" condition="-100">
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" targetitemcomponent="LightComponent" IsOn="false" setvalue="false">
+      </StatusEffect>
+    </LightComponent>
+
+    <Price baseprice="100" minleveldifficulty="15">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" sold="false"/>
+      <Price storeidentifier="merchantresearch" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="merchantengineering" multiplier="0.9" />
+    </Price>
+    <PreferredContainer primary="engcab"/>
+    <PreferredContainer secondary="wreckengcab,abandonedengcab,pirateengcab,outpostengcab,beaconengcab" amount="1" spawnprobability="0.05" />
+    <Deconstruct time="10">
+      <Item identifier="fpgacircuit" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="10">
+      <RequiredItem identifier="fpgacircuit" />
+    </Fabricate>
+  </Item>
+
+
+  <Item name="Chip channel E" identifier="chipnoE" category="Equipment" tags="smallitem, channelchip" cargocontaineridentifier="metalcrate" HideConditionBar="true" HideConditionInTooltip="true" impactsoundtag="impact_metal_light">
+    <InventoryIcon texture="%ModDir%/content/items.png" sourcerect="272,32,32,32" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/items.png" sourcerect="272,32,32,32" origin="0.5,0.5" />
+    <Body width="16" height="12" density="10.00" />
+    <Holdable slots="Any,RightHand,LeftHand" aimpos="50,0" handle1="-10,0" holdangle="20" msg="ItemMsgPickUpSelect"/>
+    
+    <Powered MinVolgate="0" powerconsumption="0" currentpowerconsumption="0" IsActive="false">
+      <!-- Señal de ejecución -->
+      <StatusEffect type="OnUse" target="Parent" targetitemcomponent="Powered" IsActive="true" setvalue="true">
+        <Conditional HasTag="remotecompatible"/>
+      </StatusEffect>
+      <!-- Señal de contacto -->
+      <StatusEffect type="OnActive" target="NearbyItems" targetitemcomponent="Powered" targetidentifiers="chipnoE" range="10000.0" >
+        <Use/>
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="this" targetitemcomponent="Powered" IsActive="false" setvalue="false"/>
+    </Powered>
+
+    <LightComponent LightColor="0.5,0.5,0.5,1.0" directional="true" Flicker="0.02" range="800" powerconsumption="0" IsOn="false">
+      <LightTexture texture="Content/Lights/lightcone.png" origin="0.0, 0.5" size="1.0,1.0" />
+      <!-- Señal de ejecución -->
+      <StatusEffect type="OnBroken" target="Parent" targetitemcomponent="LightComponent" IsOn="true" setvalue="true">
+        <Conditional HasTag="remotecontroller"/>
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="this" condition="100">
+      </StatusEffect>
+      <!-- Señal de contacto -->
+      <StatusEffect type="OnActive" target="NearbyItems" targetidentifiers="chipnoE" range="10000.0" condition="-100">
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" targetitemcomponent="LightComponent" IsOn="false" setvalue="false">
+      </StatusEffect>
+    </LightComponent>
+
+    <Price baseprice="100" minleveldifficulty="15">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" sold="false"/>
+      <Price storeidentifier="merchantresearch" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="merchantengineering" multiplier="0.9" />
+    </Price>
+    <PreferredContainer primary="engcab"/>
+    <PreferredContainer secondary="wreckengcab,abandonedengcab,pirateengcab,outpostengcab,beaconengcab" amount="1" spawnprobability="0.05" />
+    <Deconstruct time="10">
+      <Item identifier="fpgacircuit" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="10">
+      <RequiredItem identifier="fpgacircuit" />
+    </Fabricate>
+  </Item>
+
+</Items>

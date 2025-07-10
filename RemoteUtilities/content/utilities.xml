@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+
+  <Item name="Universal remote" identifier="uremote" category="Equipment" tags="smallitem, remotecontroller" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light">
+    <InventoryIcon texture="%ModDir%/content/items.png" sourcerect="0,0,32,48" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/items.png" sourcerect="32,16,48,32" origin="0.5,0.8" />
+    <Body width="16" height="3" density="10.00" />
+    <Holdable slots="Any,RightHand,LeftHand" aimpos="50,0" handle1="-10,0" holdangle="0" msg="ItemMsgPickUpSelect"/>
+    <RangedWeapon reload="0.2">
+      <sound file="Content/Items/Button/Button.ogg" type="OnUse" range="200.0" volume="0.5"/>
+      <StatusEffect type="OnUse" TargetType="Contained" targetitemcomponent="Powered" IsActive="true" disabledeltatime="true">
+      </StatusEffect>
+    </RangedWeapon>
+    <ItemContainer canbeselected="true" capacity="1" maxstacksize="1" itempos="20,-11" hideitems="true" containedspritedepth="0.81" showcontainedstateindicator="false">
+      <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="128,448,64,64" origin="0.5,0.5" />
+      <Containable items="channelchip" >
+      </Containable>
+    </ItemContainer>
+    <LightComponent LightColor="0.6,0.6,0.9,0.3" directional="false" Flicker="0.02" range="50" powerconsumption="0" IsOn="false" hidegui="true" allowingameediting="false">
+      <StatusEffect type="OnActive" target="This" targetitemcomponent="LightComponent" IsOn="false" setvalue="false" Interval="0.1">
+      </StatusEffect>
+    </LightComponent>
+    <CustomInterface canbeselected="true" ElementStates="true,1,50" msg="Deposit" drawhudwhenequipped="true" >
+      <GuiFrame relativesize="0.1,0.1" anchor="center" pivot="Center" relativeoffset="0.5,1" style="ItemUI" allowuioverlap="false"/>
+      <Button text="Activate">
+        <StatusEffect type="OnUse" TargetType="Contained" targetitemcomponent="Powered" IsActive="true">
+        </StatusEffect>
+      </Button>
+    </CustomInterface>
+    <Price baseprice="200" minleveldifficulty="15">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" sold="false"/>
+      <Price storeidentifier="merchantresearch" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="merchantengineering" multiplier="0.9" />
+    </Price>
+    <PreferredContainer primary="engcab"/>
+    <PreferredContainer secondary="wreckengcab,abandonedengcab,pirateengcab,outpostengcab,beaconengcab" amount="1" spawnprobability="0.05" />
+    <Deconstruct time="30">
+      <Item identifier="fpgacircuit" />
+      <Item identifier="plastic" amount="2"/>
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="60">
+      <RequiredItem identifier="fpgacircuit" />
+    </Fabricate>
+  </Item>
+
+
+
+  <Item name="Universal detonation device" identifier="udetonationdevice" category="Equipment" tags="smallitem, remotecompatible" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_heavy" scale="0.8">
+    <InventoryIcon texture="%ModDir%/content/items.png" sourcerect="0,48,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/items.png" sourcerect="0,48,64,64" origin="0.5,0.5" />
+    <Body width="3" height="30" density="10.00" />
+    <Holdable slots="Any,RightHand,LeftHand,InnerClothes" aimpos="50,0" handle1="-10,0" holdangle="0" msg="ItemMsgPickUpSelect">
+    </Holdable>
+    <ItemContainer capacity="1" maxstacksize="1" hideitems="false"  containedspritedepth="0.56" containedstateindicatorslot="0" showcontainedstateindicator="true" containedstateindicatorstyle="explosive">
+      <Containable items="explosive, remotemodulechip" hide="true"/>
+      <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="64,384,64,64" origin="0.5,0.5" />
+      <SlotIcon slotindex="1" texture="Content/UI/StatusMonitorUI.png" sourcerect="128,448,64,64" origin="0.5,0.5" />
+      <SubContainer capacity="1" maxstacksize="1" showcontainedstateindicator="false">
+        <Containable items="channelchip" hide="true">
+          <StatusEffect type="OnContaining" target="Contained" targetitemcomponent="LightComponent" IsOn="true" setvalue="true">
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <!-- charge 2 means 3 seconds for detonation-->
+    <PowerContainer capacity="100" Charge="2" canbeselected="false"/>
+    <Powered MinVolgate="0" powerconsumption="0" currentpowerconsumption="0" IsActive="false">
+      <StatusEffect type="OnActive" target="this" targetitemcomponent="PowerContainer" Charge="-1.0" interval="1" disabledeltatime="true" CheckConditionalAlways="true">
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="this">
+        <Conditional Charge="gt 1" targetitemcomponentname="PowerContainer" />
+        <sound file="Content/Items/WarningBeep.ogg" range="750" frequencymultiplier="2.0" volume="1" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="this">
+        <Conditional Charge="lte 0.0" targetitemcomponentname="PowerContainer" />
+        <sound file="Content/Items/Button/Switch1.ogg" range="500.0" />
+        <Use/>
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="Contained" conditionalComparison="Or">
+        <Conditional HasTag="explosive"/>
+        <Conditional HasTag="remotemodulechip"/>
+        <Use />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="this" targetitemcomponent="PowerContainer" charge="2" setvalue="true"/>
+      <StatusEffect type="OnUse" target="this" targetitemcomponent="Powered" IsActive="false" setvalue="true"/>
+    </Powered>
+    <LightComponent LightColor="0.5,0.5,0.5,1.0" directional="true" Flicker="0.02" range="800" powerconsumption="0" IsOn="false" hidegui="true" allowingameediting="false">
+      <LightTexture texture="Content/Lights/lightcone.png" origin="0.0, 0.5" size="1.0,1.0" />
+    </LightComponent>
+    <CustomInterface canbeselected="true" ElementStates="true,1,50" msg="Deposit" drawhudwhenequipped="true" >
+      <GuiFrame relativesize="0.1,0.1" anchor="center" pivot="Center" relativeoffset="1,0.8" style="ItemUI" allowuioverlap="false" />
+      <!-- set delay, mayble later-->
+      <!--
+      <NumberInput text="Seconds" target="this" targetitemcomponent="PowerContainer" propertyname="charge" min="1" max="10" step="1" getValueInterval="1"/>
+      -->
+      <Button text="Detonate" connection="signal_out" >
+        <StatusEffect type="OnUse" target="this" targetitemcomponent="Powered" IsActive="true" setvalue="true" >
+          <Conditional IsActive="false"/>
+        </StatusEffect>
+      </Button>
+    </CustomInterface>
+
+    <Price baseprice="1000" minleveldifficulty="15">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" sold="false"/>
+      <Price storeidentifier="merchantresearch" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="merchantengineering" multiplier="0.9" />
+    </Price>
+    <PreferredContainer primary="engcab"/>
+    <PreferredContainer secondary="wreckengcab,abandonedengcab,pirateengcab,outpostengcab,beaconengcab" amount="1" spawnprobability="0.05" />
+    <Deconstruct time="30">
+      <Item identifier="fpgacircuit" />
+      <Item identifier="iron" amount="2"/>
+      <Item identifier="titaniumaluminiumalloy"/>
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="60">
+      <RequiredItem identifier="fpgacircuit" />
+      <Item identifier="iron" amount="4"/>
+      <Item identifier="titaniumaluminiumalloy"/>
+    </Fabricate>
+  </Item>
+
+
+
+  <Item name="Universal remote switch" identifier="uremoteswitch" category="Electrical" tags="smallitem, logic, remotecompatible" isshootable="true" grabwhenselected="false" scale="0.5" impactsoundtag="impact_metal_light">
+    <InventoryIcon texture="%ModDir%/content/items.png" sourcerect="96,0,32,48" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/items.png" sourcerect="96,0,32,48" origin="0.5,0.5" depth="0.8"/>
+    <Body width="16" height="12" density="10.00" />
+
+    <Holdable selectkey="Select" pickkey="Use" slots="Any,RightHand,LeftHand" msg="ItemMsgDetachWrench" MsgWhenDropped="ItemMsgPickupSelect" PickingTime="5.0" aimpos="65,-10" handle1="0,0" attachable="true" aimable="true">
+      <RequiredItem items="wrench,deattachtool" excludeditems="multitool" type="Equipped" />
+    </Holdable>
+
+    <ItemContainer capacity="0" maxstacksize="1" hideitems="true" canbeselected="true" selectkey="Select" containedspritedepth="0.56" containedstateindicatorslot="0" showcontainedstateindicator="false">
+      <GuiFrame relativesize="0.20,0.20" anchor="Center" style="ItemUI" />
+      <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="128,448,64,64" origin="0.5,0.5" />
+      <SubContainer capacity="1" maxstacksize="1" showcontainedstateindicator="false">
+        <Containable items="channelchip" hide="true">
+          <StatusEffect type="OnContaining" target="Contained" targetitemcomponent="LightComponent" IsOn="true" setvalue="true">
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+
+    <Powered MinVolgate="0" powerconsumption="0" currentpowerconsumption="0" IsActive="false">
+      <StatusEffect type="OnActive" target="this" targetitemcomponent="RelayComponent" IsOn="true" setvalue="true" Delay="0.1" stackeable="false">
+        <Conditional IsOn="false" />
+        <sound file="Content/Items/Button/Switch1.ogg" range="500.0" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="this" targetitemcomponent="RelayComponent" IsOn="false" setvalue="true" Delay="0.1" stackeable="false">
+        <Conditional IsOn="true" />
+        <sound file="Content/Items/Button/Switch1.ogg" range="500.0" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="this" targetitemcomponent="Powered" IsActive="false" setvalue="false"/>
+    </Powered>
+
+    <LightComponent LightColor="0,1,0,0.5" directional="true" Flicker="0.02" range="10" powerconsumption="0" IsOn="false" hidegui="true" allowingameediting="false">
+    </LightComponent>
+
+    <RelayComponent selectkey="select" canbeselected="false" vulnerabletoemp="false" canbeoverloaded="false">
+      <GuiFrame relativesize="0.2,0.14" minsize="450,160" anchor="Center" style="ItemUI" />
+    </RelayComponent>
+
+    <ConnectionPanel selectkey="Action" canbeselected="true" hudpriority="10" msg="ItemMsgRewireScrewdriver">
+      <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel"/>
+      <RequiredItem items="screwdriver" type="Equipped" />
+      <output name="state_out" displayname="connection.stateout" />
+    </ConnectionPanel>
+
+    <Price baseprice="100" minleveldifficulty="15">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" sold="false"/>
+      <Price storeidentifier="merchantresearch" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="merchantengineering" multiplier="0.9" />
+    </Price>
+    <PreferredContainer primary="engcab"/>
+    <PreferredContainer secondary="wreckengcab,abandonedengcab,pirateengcab,outpostengcab,beaconengcab" amount="1" spawnprobability="0.05" />
+    <Deconstruct time="10">
+      <Item identifier="fpgacircuit" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="10">
+      <RequiredItem identifier="fpgacircuit" />
+    </Fabricate>
+  </Item>
+
+</Items>
+
+

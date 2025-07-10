@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<contentpackage name="Remote utilities" modversion="1.0" corepackage="False" steamworkshopid="3521646987" gameversion="1.9.8.0">
+  <Item file="%ModDir%/content/utilities.xml" />
+  <Item file="%ModDir%/content/chips.xml" />
+</contentpackage>
